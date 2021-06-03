@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "SessionAll";
+}
+
+<h2 class="p-3" style="text-align:center;">All Sessions</h2>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">№</th>
+            <th scope="col">Film</th>
+            <th scope="col">Hall</th>
+            <th scope="col">Time</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in ViewBag.Sess)
+        {
+            if (s.ShowStatus == 1)
+            {
+                <tr>
+                    <th scope="row">@s.Id</th>
+                    <td>@s.Film.Title</td>
+                    <td>@s.Hall.Name</td>
+                    <td>@s.DateTime.ToShortTimeString()</td>
+                    <td> <a class="delFilm" href="SessDel/@s.Id"><i class="fas fa-trash"></i></a></td>
+                </tr>
+            }
+
+
+        }
+    </tbody>
+</table>

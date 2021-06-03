@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Checkout";
+}
+<h2 class="p-3" style="text-align:center;">Your basket</h2>
+@if (TempData["Card"] != null)
+{
+    int num = 0;
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">№</th>
+                <th scope="col">Film</th>
+                <th scope="col">Place</th>
+                <th scope="col">Price</th>
+                <th scope="col">Delete from card</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+
+            @foreach (var p in TempData["Card"] as List<CinemaTR3.Models.Card>)
+            {
+                num++;
+            <tr>
+                <th scope="row">@num</th>
+                <td>@p.Session</td>
+                <td>@p.Place</td>
+                <td>@p.price UAH</td>
+                <td> <a class="delFilm" href="DelFromCard/@p.TicketId">Delete</a></td>
+            </tr>
+            }
+
+            <tr>
+                <td>Total price: </td>
+                <td>@TempData["Total"] UAH</td>
+            </tr>
+
+
+
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="BuyForm">Offer tickets</a>
+}
+else
+{
+    <div style="margin-top:150px;" tabindex="-1" aria-labelledby="exampleModalCenteredLabel">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenteredLabel">Your card is empty now</h5>
+                </div>
+                <div class="modal-body">
+                    <p style="text-align:center;">Find out a film that you like</p>
+                </div>
+                <div style="text-align: center;" class="modal-footer">
+                    <a class="btn btn-primary" href="Index">Start</a>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+}

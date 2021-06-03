@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaTR3", "CinemaTR3\CinemaTR3.csproj", "{11039ECC-A782-4A97-97B7-F8CCF58C1ACF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaTest", "CinemaTest\CinemaTest.csproj", "{005403CA-B5F9-4B7C-B856-342E5E3BAF72}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11039ECC-A782-4A97-97B7-F8CCF58C1ACF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11039ECC-A782-4A97-97B7-F8CCF58C1ACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11039ECC-A782-4A97-97B7-F8CCF58C1ACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11039ECC-A782-4A97-97B7-F8CCF58C1ACF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{005403CA-B5F9-4B7C-B856-342E5E3BAF72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{005403CA-B5F9-4B7C-B856-342E5E3BAF72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{005403CA-B5F9-4B7C-B856-342E5E3BAF72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{005403CA-B5F9-4B7C-B856-342E5E3BAF72}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {22A42D95-0A9B-4012-B821-4197247B4EA2}
+	EndGlobalSection
+EndGlobal

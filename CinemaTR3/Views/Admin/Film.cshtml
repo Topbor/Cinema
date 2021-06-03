@@ -1,0 +1,108 @@
+﻿@model IEnumerable<CinemaTR3.Models.Film>
+@{
+    ViewBag.Title = "Film";
+}
+@foreach (var p in Model)
+{
+    <h2 class="p-3" style="text-align:center;">@p.Title</h2>
+    <div class="container">
+
+        <div class="film">
+            <div class="col1picture col-lg-4 col-md-4"><img src="@p.Img" alt="Alternate Text" /></div>
+            <div class="col2desc col-lg-8 col-md-8">
+                <p><a href="/Admin/Film/@p.Id"><h4>Title: @p.Title</h4></a></p>
+                <p>Description: @p.LongDesc</p>
+                <p>Studio: @p.Studio</p>
+                <p>Language: @p.Language</p>
+                <p>Chronometrage: @p.ChoronoHours h @p.ChoronoMinutes min</p>
+                <p>Director: @p.Director</p>
+                <p>Category: @p.Category.Name</p>
+                <p>Cast: @p.Cast</p>
+            </div>
+        </div>
+        <div class="sessions col-lg-6 col-md-6">
+            <h2 class="p-3" style="text-align:center;">Available sessions</h2>
+            <ul class="nav nav-tabs daynav">
+                <li style="color: #e60202;" class="nav-item d1 d dactive">
+                    @DateTime.Today.ToShortDateString()
+                </li>
+                <li class="nav-item d2 d">
+                    @DateTime.Today.AddDays(1).ToShortDateString()
+                </li>
+                <li class="nav-item d3 d">
+                    @DateTime.Today.AddDays(2).ToShortDateString()
+                </li>
+            </ul>
+            <div style="display:flex;" class="dd ddactive">
+                @foreach (var ses in ViewBag.sessions)
+                {
+                    if (@ses.DateTime.Date == DateTime.Today /*&& DateTime.Now.TimeOfDay < @ses.DateTime.TimeOfDay*/ && @ses.ShowStatus==1)
+                    {
+                        <p><a class="time" href="/Admin/Sess/@ses.Id">@ses.DateTime.ToShortTimeString()</a> </p>
+                    }
+
+                }
+            </div>
+            <div style="display:none;" class="dd">
+                @foreach (var ses in ViewBag.sessions)
+                {
+                    if (@ses.DateTime.Date == DateTime.Today.AddDays(1) /*&& DateTime.Now.TimeOfDay < @ses.DateTime.TimeOfDay*/ && @ses.ShowStatus == 1)
+                    {
+                        <p><a class="time" href="/Admin/Sess/@ses.Id">@ses.DateTime.ToShortTimeString()</a> </p>
+                    }
+
+                }
+            </div>
+            <div style="display:none;" class="dd">
+                @foreach (var ses in ViewBag.sessions)
+                {
+                    if (@ses.DateTime.Date == DateTime.Today.AddDays(2) /*&& DateTime.Now.TimeOfDay < @ses.DateTime.TimeOfDay*/ && @ses.ShowStatus == 1)
+                    {
+                        <p><a class="time" href="/Admin/Sess/@ses.Id">@ses.DateTime.ToShortTimeString()</a> </p>
+                    }
+
+                }
+            </div>
+
+        </div>
+        
+    </div>
+}
+
+<script>
+    var d1 = document.querySelector('.d1');
+    var d2 = document.querySelector('.d2');
+    var d3 = document.querySelector('.d3');
+    var ddd = document.querySelectorAll('.d');
+    d1.addEventListener("click", function () {
+        var d = document.querySelectorAll('.dd');
+        for (let i = 0; i < d.length; i++) {
+            d[i].style = "display:none";
+            ddd[i].style = "color:black";
+        }
+        d[0].style = "display:flex";
+        ddd[0].style = "color:#e60202";
+    });
+    d2.addEventListener("click", function () {
+        var d = document.querySelectorAll('.dd');
+        for (let i = 0; i < d.length; i++) {
+            d[i].style = "display:none";
+            ddd[i].style = "color:black";
+        }
+        d[1].style = "display:flex";
+        ddd[1].style = "color:#e60202";
+    });
+
+    d3.addEventListener("click", function () {
+        var d = document.querySelectorAll('.dd');
+        for (let i = 0; i < d.length; i++) {
+            d[i].style = "display:none";
+            ddd[i].style = "color:black";
+        }
+        d[2].style = "display:flex";
+        ddd[2].style = "color:#e60202";
+    });
+
+
+
+</script>

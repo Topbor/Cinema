@@ -1,0 +1,74 @@
+﻿@model IEnumerable<CinemaTR3.Models.Hall>
+
+@{
+    ViewBag.Title = "Hall";
+}
+
+@foreach (var p in Model)
+{
+    <h2 class="p-3" style="text-align:center;">@p.Name</h2>
+    <div class="container">
+
+        <div class="category">
+            <div class="col1picture col-lg-4 col-md-4"><img src="@p.Img" alt="Alternate Text" /></div>
+            <div class="col2desc col-lg-8 col-md-8">
+                <p><a href="/Home/Category/@p.Id"><h4>Title: @p.Name</h4></a></p>
+                <p>Description: @p.Desc</p>
+                <p>Number: @p.Number</p>
+            </div>
+        </div>
+        <h2 class="p-3" style="text-align:center;">View of hall</h2>
+        <div class="hall" style="width: 20%; margin: 10px auto;">
+            <div class="screen" style="height: 28px; text-align: center; border: 5px solid black;">
+                Screen
+            </div>
+            <div class="row1">
+                @foreach (var k in ViewBag.Places)
+                {
+
+                    if (@k.Number < 7)
+                    {
+                        <p style="text-align: center; border-radius: 7px; width: 13%; color: white; background: red; border: 4px solid #930000; cursor: pointer;">@k.Number</p>
+                    }
+                }
+            </div>
+            <div class="row2">
+                @foreach (var k in ViewBag.Places)
+                {
+                    if (@k.Number > 6 && @k.Number < 13)
+                    {
+                        <p style="text-align: center; border-radius: 7px; width: 13%; color: white; background: red; border: 4px solid #930000; cursor: pointer;">@k.Number</p>
+                    }
+                }
+            </div>
+            <div class="row3">
+                @foreach (var k in ViewBag.Places)
+                {
+                    if (@k.Number > 12 && @k.Number < 19)
+                    {
+                        <p style="text-align: center; border-radius: 7px; width: 13%; color: white; background: red; border: 4px solid #930000; cursor: pointer;">@k.Number</p>
+                    }
+                }
+            </div>
+            <div class="row4">
+                @foreach (var k in ViewBag.Places)
+                {
+                    if (@k.Number > 18 && @k.Number < 25)
+                    {
+                        <p style="text-align: center; border-radius: 7px; width: 13%; color: white; background: red; border: 4px solid #930000; cursor: pointer;">@k.Number</p>
+                    }
+                }
+            </div>
+            <div class="row5">
+                @foreach (var k in ViewBag.Places)
+                {
+                    if (@k.Number > 24)
+                    {
+                        <p style="text-align: center; border-radius: 7px; width: 13%; color: white; background: red; border: 4px solid #930000; cursor: pointer;">@k.Number</p>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+}
+

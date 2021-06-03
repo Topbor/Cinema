@@ -1,0 +1,156 @@
+﻿@model IEnumerable<CinemaTR3.Models.Session>
+
+@{
+    ViewBag.Title = "Session";
+}
+
+@foreach (var p in Model)
+{
+<h2 class="p-3" style="text-align:center;">@p.Film.Title</h2>
+    <div class="container d-flex tick">
+
+        <div class="SesInfo col-lg-3 col-md-3" >
+            <h3 style="text-align:center;">Info</h3>
+            <p>Film: @p.Film.Title</p>
+            <p>Hall: @p.Hall.Name</p>
+            <p>Time: @p.DateTime.ToShortTimeString()</p>
+            <div style="display:flex;">
+                Price per ticket: 
+                @foreach (var k in ViewBag.tickets)
+                {
+                    if (@k.Place.Number == 1)
+                    {
+                       <p> @k.Price UAH </p>
+                    }
+                }
+            </div>
+        </div>
+        <div class="Tickets col-lg-6 col-md-6">
+            <h3 style="text-align:center;">Available tickets</h3>
+            <div class="screen" style="height: 28px; text-align: center; border: 5px solid black;">
+                Screen
+            </div>
+            <div class="row1">
+                @foreach (var k in ViewBag.tickets)
+                {
+                    if (@k.Place.Number < 7)
+                    {
+                        if (@k.Status == 1)
+                        {
+                            <form method="post">
+                                <input type="hidden" name="TicketId" value="@k.Id" />
+                                <input type="hidden" name="SessionId" value="@k.Session.Id" />
+                                <input type="hidden" name="PlaceId" value="@k.Place.Id" />
+                                <input style=" width: 70px!important; font-size: 15px; border-radius: 5px; text-align: center; border: 2px solid grey; background: #930000; color: white;" type="submit" class="tikA" name="sub" value="@k.Place.Number" />
+                            </form>
+                        }
+                        else if (@k.Status == 0)
+                        {
+                            <p class="blocked">@k.Place.Number</p>
+                        }
+
+
+                    }
+                }
+            </div>
+            <div class="row2">
+                @foreach (var k in ViewBag.tickets)
+                {
+                    if (@k.Place.Number > 6 && @k.Place.Number < 13)
+                    {
+                        if (@k.Status == 1)
+                        {
+                            <form method="post">
+                                <input type="hidden" name="TicketId" value="@k.Id" />
+                                <input type="hidden" name="SessionId" value="@k.Session.Id" />
+                                <input type="hidden" name="PlaceId" value="@k.Place.Id" />
+                                <input style=" width: 70px!important; font-size: 15px; border-radius: 5px; text-align: center; border: 2px solid grey; background: #930000; color: white;" type="submit" class="tikA" name="sub" value="@k.Place.Number" />
+                            </form>
+                        }
+                        else if (@k.Status == 0)
+                        {
+                            <p class="blocked">@k.Place.Number</p>
+                        }
+
+                    }
+                }
+            </div>
+            <div class="row3">
+                @foreach (var k in ViewBag.tickets)
+                {
+                    if (@k.Place.Number > 12 && @k.Place.Number < 19)
+                    {
+                        if (@k.Status == 1)
+                        {
+                            <form method="post">
+                                <input type="hidden" name="TicketId" value="@k.Id" />
+                                <input type="hidden" name="SessionId" value="@k.Session.Id" />
+                                <input type="hidden" name="PlaceId" value="@k.Place.Id" />
+                                <input style=" width: 70px!important; font-size: 15px; border-radius: 5px; text-align: center; border: 2px solid grey; background: #930000; color: white;" type="submit" class="tikA" name="sub" value="@k.Place.Number" />
+                            </form>
+                        }
+                        else if (@k.Status == 0)
+                        {
+                            <p class="blocked">@k.Place.Number</p>
+                        }
+
+                    }
+                }
+            </div>
+            <div class="row4">
+                @foreach (var k in ViewBag.tickets)
+                {
+                    if (@k.Place.Number > 18 && @k.Place.Number < 25)
+                    {
+                        if (@k.Status == 1)
+                        {
+                            <form method="post">
+                                <input type="hidden" name="TicketId" value="@k.Id" />
+                                <input type="hidden" name="SessionId" value="@k.Session.Id" />
+                                <input type="hidden" name="PlaceId" value="@k.Place.Id" />
+                                <input style=" width: 70px!important; font-size: 15px; border-radius: 5px; text-align: center; border: 2px solid grey; background: #930000; color: white;" type="submit" class="tikA" name="sub" value="@k.Place.Number" />
+                            </form>
+                        }
+                        else if (@k.Status == 0)
+                        {
+                            <p class="blocked">@k.Place.Number</p>
+                        }
+                    }
+                }
+            </div>
+            <div class="row5">
+                @foreach (var k in ViewBag.tickets)
+                {
+                    if (@k.Place.Number > 24)
+                    {
+                        if (@k.Status == 1)
+                        {
+                            <form method="post">
+                                <input type="hidden" name="TicketId" value="@k.Id" />
+                                <input type="hidden" name="SessionId" value="@k.Session.Id" />
+                                <input type="hidden" name="PlaceId" value="@k.Place.Id" />
+                                <input style=" width: 70px!important; font-size: 15px; border-radius: 5px; text-align: center; border: 2px solid grey; background: #930000; color: white;" type="submit" class="tikA" name="sub" value="@k.Place.Number" />
+                            </form>
+                        }
+                        else if (@k.Status == 0)
+                        {
+                            <p class="blocked">@k.Place.Number</p>
+                        }
+
+                    }
+                }
+            </div>
+            <div style="padding:30px;">
+                <div style="display:flex; justify-content:center;"><p class="pd" style="margin-right:20px; width: 13%;border-radius: 5px; text-align: center; border: 2px solid grey; background: #930000; color: white;"><a class="tikA" href="#">1</a></p> - Avaliable places</div>
+                <div style="display:flex; justify-content:center;"> <p class="selected pd" style="margin-right: 20px;  width: 13%; border-radius: 5px; text-align: center; border: 2px solid grey; background: #930000; color: white;">1</p> - Selected places</div>
+                <div style="display:flex; justify-content:center;"><p class="blocked pd" style="margin-right: 20px;  width: 13%; border-radius: 5px; text-align: center; border: 2px solid grey; background: #930000; color: white;">1</p> - Unavaliable places</div>
+            </div>
+        </div>
+        <div class="Basket col-lg-3 col-md-3">
+            <h3 style="text-align:center;"> Your basket</h3>
+            <p>Your basket is empty now</p>
+        </div>
+
+    </div>
+}
+

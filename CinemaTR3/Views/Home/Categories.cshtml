@@ -1,0 +1,19 @@
+﻿@model IEnumerable<CinemaTR3.Models.Category>
+
+@{
+    ViewBag.Title = "Categories";
+}
+
+<h2 class="p-3" style="text-align:center;">Categories of films</h2>
+<div>
+    @foreach (var c in Model)
+    {
+        <div class="category-card col-lg-8 col-md-8 p-2 m-2">
+            <div class="pict p-2"><img src="@c.Img" alt="Alternate Text" /></div>
+            <div class="desc p-2">
+                <p><a href="/Home/Category/@c.Id"><h4>@c.Name</h4></a></p>
+                <p>Description: @c.ShortDesc</p>
+            </div>
+        </div>
+    }
+</div>

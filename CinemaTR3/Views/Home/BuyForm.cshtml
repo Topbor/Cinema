@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "BuyTickets";
+}
+
+<form style="margin-top:200px;" method="post">
+    <div class="form-group k">
+        <label for="Name">Your name</label>
+        <input name="Name" type="text" class="form-control" id="Name" placeholder="Name">
+        <input name="Total" type="hidden" class="form-control" id="Total" value=@TempData["Total"]>
+    </div>
+    <div class="form-group k">
+        <label for="Surname">Your surname</label>
+        <input name="Surname" type="text" class="form-control" id="Surname" placeholder="Surname">
+    </div>
+    <div class="form-group k">
+        <label for="Phone">Your phone</label>
+        <input name="Phone" type="text" class="form-control" id="Phone" placeholder="Phone">
+    </div>
+    <div class="form-group k">
+        <button style="margin-top:20px;" type="submit" class="btn btn-primary mb-2">Confirm</button>
+    </div>
+</form>
+

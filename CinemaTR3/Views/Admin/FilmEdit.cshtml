@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "FilmEdit";
+}
+
+<h2 class="p-3" style="text-align:center;">Edit film</h2>
+@foreach (var k in ViewBag.Film)
+{
+    <form method="post">
+        <div class="form-group k">
+            <label for="Title">Film title</label>
+            <input name="ShowStaus" value=1 type="hidden" class="form-control">
+            <input name="Id" value="@k.Id" type="hidden" class="form-control">
+            <input name="Title" type="text" value="@k.Title" class="form-control" id="Title" placeholder="Title">
+        </div>
+        <div class="form-group k">
+            <label for="ShortDesc">Short info about film</label>
+            <textarea name="ShortDesc" class="form-control" id="ShortDesc" rows="3">@k.ShortDesc</textarea>
+        </div>
+        <div class="form-group k">
+            <label for="LongDesc">Long info about film</label>
+            <textarea name="LongDesc"  class="form-control" id="LongDesc" rows="3">@k.LongDesc</textarea>
+        </div>
+        <div class="form-group k">
+            <label for="Cast">Cast</label>
+            <textarea name="Cast"  class="form-control" id="Cast" rows="3">@k.Cast</textarea>
+        </div>
+        <div class="form-group k">
+            <label for="Studio">Studio</label>
+            <input name="Studio" value="@k.Studio" type="text" class="form-control" id="Studio" placeholder="Studio">
+        </div>
+        <div class="form-group k">
+            <label for="Director">Director</label>
+            <input name="Director" value="@k.Director" type="text" class="form-control" id="Director" placeholder="Director">
+        </div>
+        <div class="form-group k">
+            <label for="Language">Language</label>
+            <input name="Language" value="@k.Language" type="text" class="form-control" id="Language" placeholder="Language">
+        </div>
+        <div class="form-group k">
+            <label for="Language">Chronometrage</label>
+            <p style="display:flex;">
+                <input name="ChoronoHours" value="@k.ChoronoHours" style="width:80px!important;" type="number" class="form-control" id="ChoronoHours" placeholder="hrs"><strong style="padding:5px;">hrs</strong>
+                <input name="ChoronoMinutes" value="@k.ChoronoMinutes" style="width:80px!important;" type="number" class="form-control" id="ChoronoMinutes" placeholder="min"><strong style="padding:5px;">mints</strong>
+            </p>
+        </div>
+        <div class="form-group k">
+            <label for="Img">Image</label>
+            <input name="Img" type="text" value="@k.Img" class="form-control" id="Img" placeholder="Image url">
+        </div>
+        <div class="form-group k">
+            <label for="start">Start date:</label>
+            <input type="date" id="start"  name="StartDate" value="@DateTime.Today" min=" @DateTime.Today" max=" @DateTime.Today.AddYears(1)">
+        </div>
+        <div class="form-group k">
+            <label for="finish">Finish date:</label>
+            <input type="date" id="finish" name="FinishDate" value="@DateTime.Today" min=" @DateTime.Today" max=" @DateTime.Today.AddYears(1)">
+        </div>
+        <div class="form-group k">
+            <button style="margin-top:20px;" type="submit" class="btn btn-primary mb-2">Confirm</button>
+        </div>
+    </form>
+}

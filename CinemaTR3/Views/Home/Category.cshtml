@@ -1,0 +1,36 @@
+﻿@model IEnumerable<CinemaTR3.Models.Category>
+
+@{
+    ViewBag.Title = "Categories";
+}
+
+@foreach (var p in Model)
+{
+    <h2 class="p-3" style="text-align:center;">@p.Name</h2>
+    <div class="container">
+
+        <div class="category">
+            <div class="col1picture col-lg-4 col-md-4"><img src="@p.Img" alt="Alternate Text" /></div>
+            <div class="col2desc col-lg-8 col-md-8">
+                <p><a href="/Home/Category/@p.Id"><h4>Title: @p.Name</h4></a></p>
+                <p>Description: @p.LongDesc</p>
+            </div>
+        </div>
+        <h2 class="p-3" style="text-align:center;">Films of this Category</h2>
+        <div class="films">
+            @foreach (var k in ViewBag.films)
+            {
+                <div class="film-card col-lg-8 col-md-8 p-2 m-2 d-flex">
+                    <div class="pict p-2"><img src="@k.Img" alt="Alternate Text" /></div>
+                    <div class="desc p-2">
+                        <p><a href="/Home/Film/@k.Id"><h4>@k.Title</h4></a></p>
+                        <p>Description: @k.ShortDesc</p>
+                        <p>Chronometrage: @k.ChoronoHours h @k.ChoronoMinutes min</p>
+                        <p>Director: @k.Director</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+        }
+    

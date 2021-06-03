@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Orders";
+}
+
+<h2 class="p-3" style="text-align:center;">All Sessions</h2>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">№</th>
+            <th scope="col">Person</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Price</th>
+            <th scope="col">Change status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in ViewBag.Ord)
+        {
+            if (s.Status==1)
+            {
+                <tr>
+                    <th scope="row">@s.Id</th>
+                    <td>@s.Name @s.Surname</td>
+                    <td>@s.Phone</td>
+                    <td>@s.Price UAH</td>
+
+                    <td> <a class="btn btn-success" href="ChangeStatus/@s.Id">Done</a></td>
+                </tr>
+            }
+
+
+        }
+    </tbody>
+</table>
+
+

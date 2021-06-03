@@ -1,0 +1,19 @@
+﻿@model IEnumerable<CinemaTR3.Models.Hall>
+
+@{
+    ViewBag.Title = "Halls";
+}
+
+<h2 class="p-3" style="text-align:center;"> Our cinema halls</h2>
+<div>
+    @foreach (var p in Model)
+    {
+        <div class="film-card col-lg-8 col-md-8 p-2 m-2 d-flex">
+            <div class="pict p-2"><img src="@p.Img" alt="Alternate Text" /></div>
+            <div class="desc p-2">
+                <p><a href="/Home/Hall/@p.Id"><h4>Name: @p.Name hall</h4></a></p>
+                <p>Number: @p.Number</p>
+            </div>
+        </div>
+    }
+</div>

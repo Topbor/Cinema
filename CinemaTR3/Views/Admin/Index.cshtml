@@ -1,0 +1,97 @@
+﻿@model IEnumerable<CinemaTR3.Models.Film>
+@{
+    ViewBag.Title = "Films";
+}
+<div class="sessions">
+    <ul class="nav nav-tabs daynav">
+        <li style="color: #e60202;" class="nav-item f1 d dactive">
+            Available films
+        </li>
+        <li class="nav-item f2 d">
+            Films soon
+        </li>
+    </ul>
+</div>
+<div class="dd">
+<h2 class="p-3" style="text-align:center;"> Фільми в прокаті</h2>
+<h4 class="p-3" style="text-align:center;margin-top:20px; margin-bottom:20px;"><a class="addFilm" href="FilmAdd"><i class="fas fa-plus"></i>  Add new film</a></h4>
+<div>
+    @foreach (var p in Model)
+    {
+        if (@p.ShowStaus == 1 && p.StartDate.Date <= DateTime.Today && p.FinishDate.Date >= DateTime.Today)
+        {
+            <div class="film-card col-lg-8 col-md-8 p-2 m-2 d-flex">
+                <div class="pict p-2"><img src="@p.Img" alt="Alternate Text" /></div>
+                <div class="desc p-2">
+                    <p><a href="/Admin/Film/@p.Id"><h4>@p.Title</h4></a></p>
+                    <p>Description: @p.ShortDesc</p>
+                    <p>Studio: @p.Studio</p>
+                    <p>Chronometrage: @p.ChoronoHours h @p.ChoronoMinutes min</p>
+                    <p>Director: @p.Director</p>
+                    <p>Date of start showing: @p.StartDate.ToShortDateString()</p>
+                    <p>Date of finish showing: @p.FinishDate.ToShortDateString()</p>
+                    <p>Category:<a href="/Admin/Category/@p.Category.Id"> @p.Category.Name</a></p>
+                    <p style="color:red;">Available for @p.FinishDate.Date.Subtract(DateTime.Today).Days Days</p>
+                    <p> <a class="editFilm" href="FilmEdit/@p.Id"><i class="fas fa-edit"></i></a>  <a class="delFilm" href="FilmDel/@p.Id"><i class="fas fa-trash"></i></a>  </p>
+                </div>
+            </div>
+        }
+
+    }
+</div>
+
+</div>
+
+<div class="dd">
+    <h2 class="p-3" style="text-align:center;"> Films soon</h2>
+    <h4 class="p-3" style="text-align:center;margin-top:20px; margin-bottom:20px;"><a class="addFilm" href="FilmAdd"><i class="fas fa-plus"></i>  Add new film</a></h4>
+    <div>
+        @foreach (var p in Model)
+        {
+            if (@p.ShowStaus == 1 && p.StartDate.Date.Subtract(DateTime.Today).Days <= 10 && p.StartDate.Date.Subtract(DateTime.Today).Days > 0)
+            {
+                <div class="film-card col-lg-8 col-md-8 p-2 m-2 d-flex">
+                    <div class="pict p-2"><img src="@p.Img" alt="Alternate Text" /></div>
+                    <div class="desc p-2">
+                        <p><a href="/Admin/Film/@p.Id"><h4>@p.Title</h4></a></p>
+                        <p>Description: @p.ShortDesc</p>
+                        <p>Studio: @p.Studio</p>
+                        <p>Chronometrage: @p.ChoronoHours h @p.ChoronoMinutes min</p>
+                        <p>Director: @p.Director</p>
+                        <p>Date of start showing: @p.StartDate.ToShortDateString()</p>
+                        <p>Date of finish showing: @p.FinishDate.ToShortDateString()</p>
+                        <p>Category:<a href="/Admin/Category/@p.Category.Id"> @p.Category.Name</a></p>
+                        <p style="color:red;">Available in @p.StartDate.Date.Subtract(DateTime.Today).Days Days</p>
+                        <p> <a class="editFilm" href="FilmEdit/@p.Id"><i class="fas fa-edit"></i></a>  <a class="delFilm" href="FilmDel/@p.Id"><i class="fas fa-trash"></i></a>  </p>
+                    </div>
+                </div>
+            }
+
+        }
+    </div>
+
+</div>
+<script>
+    var f1 = document.querySelector('.f1');
+    var f2 = document.querySelector('.f2');
+    var ddd = document.querySelectorAll('.d');
+    f1.addEventListener("click", function () {
+        var d = document.querySelectorAll('.dd');
+        for (let i = 0; i < d.length; i++) {
+            d[i].style = "display:none";
+            ddd[i].style = "color:black";
+        }
+        d[0].style = "display:block";
+        ddd[0].style = "color:#e60202";
+    });
+    f2.addEventListener("click", function () {
+        var d = document.querySelectorAll('.dd');
+        for (let i = 0; i < d.length; i++) {
+            d[i].style = "display:none";
+            ddd[i].style = "color:black";
+        }
+        d[1].style = "display:block";
+        ddd[1].style = "color:#e60202";
+    });
+
+</script>
